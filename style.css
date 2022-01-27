@@ -1,0 +1,10 @@
+body {
+    width: 300px;
+    height: 600px;
+}
+
+.site-row {
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+

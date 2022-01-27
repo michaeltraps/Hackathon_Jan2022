@@ -13,15 +13,23 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
         var activeTab = tabs[0];
         var activeURL = activeTab.url.match("\/\/(.*?)\/")[1];
         console.log(activeURL);
-        
+
         chrome.storage.sync.get('siteLog', function (data) {
+            let parent = document.getElementById('main-table');
             if (prevURL != undefined) {
+              let visitLength = Date.now() - startTime;
               if (data['siteLog'][prevURL]) {
-                  data['siteLog'][prevURL] += (Date.now() - startTime);
-                  // Add a new div for this item
+                  data['siteLog'][prevURL] += visitLength;
+                  let currentRow = document.getElementById(prevURL);
+                  currentRow.innerHTML = `<div>${prevURL}</div><div>${data['siteLog'][prevURL]}</div>`
               } else {
-                  data['siteLog'][prevURL] = (Date.now() - startTime);
-                  // Update exisiting div for this item
+                  data['siteLog'][prevURL] = visitLength;
+                  let currentRow = document.createElement('div');
+                  currentRow.setAttribute('class', 'site-row');
+                  currentRow.setAttribute('id', prevURL);
+                  currentRow.innerHTML = `<div>${prevURL}</div><div>${data['siteLog'][prevURL]}</div>`
+                  parent.appendChild(currentRow);
+                 
               }
             }
 
