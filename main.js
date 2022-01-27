@@ -6,7 +6,7 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 let prevURL;
-let timer = 0;
+let startTime = 0;
 
 chrome.tabs.onActivated.addListener(function (activeInfo) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -15,21 +15,19 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
         console.log(activeURL);
 
         chrome.storage.sync.get('siteLog', function (data) {
-            console.log('data');
-            console.log(data);
-            console.log('data[siteLog]');
-            console.log(data['siteLog']);
             if (prevURL != undefined) {
               if (data['siteLog'][prevURL]) {
-                  data['siteLog'][prevURL]++;
+                  data['siteLog'][prevURL] += (Date.now() - startTime);
               } else {
-                  data['siteLog'][prevURL] = 1;
+                  data['siteLog'][prevURL] = (Date.now() - startTime);
               }
             }
-            
+
+            console.log('Current data...');
+            console.log(data['siteLog']);
             chrome.storage.sync.set({ 'siteLog': data['siteLog'] });
-            console.log(data);
             prevURL = activeURL;
+            startTime = Date.now();
         });
         
     });
