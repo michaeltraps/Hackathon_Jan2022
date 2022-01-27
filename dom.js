@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Loop through each element in our object, and insert a row/value
     chrome.storage.sync.get('siteLog', function (data) {
         currentData = data['siteLog'];
-        for (const site of currentData) {
+        for (const site of Object.keys(currentData)) {
             alert(site);
             let newItem = document.createElement('div');
             newItem.setAttribute('class', 'site-row');
