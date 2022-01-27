@@ -17,6 +17,7 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
             } else {
                 data[activeURL] = 1;
             }
+            chrome.storage.sync.set({ 'siteLog': data });
             console.log(data);
         });
         
