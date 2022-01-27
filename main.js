@@ -9,5 +9,4 @@ chrome.tabs.onActivated.addListener(function(activeInfo) {
     console.log(activeInfo.tabId);
     console.log(activeInfo.url);
     console.log(activeInfo);
-    console.log(window.location.toString());
 });
