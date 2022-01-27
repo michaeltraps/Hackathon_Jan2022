@@ -12,6 +12,10 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
         console.log(activeURL);
 
         chrome.storage.sync.get('siteLog', function (data) {
+            console.log('data');
+            console.log(data);
+            console.log('data[siteLog]');
+            console.log(data[siteLog]);
             if (data['siteLog'][activeURL]) {
                 data['siteLog'][activeURL]++;
             } else {
