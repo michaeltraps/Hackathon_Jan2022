@@ -9,9 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
         for (const site of Object.keys(currentData)) {
             let newItem = document.createElement('div');
             newItem.setAttribute('class', 'site-row');
-            let minutes = currentData[site] / 60000;
+            
             let remainder = currentData[site] % 60000;
-            let seconds = remainder / 1000;
+            let minutes = (currentData[site] - remainder) / 60000;
+            let seconds = Math.ceil(remainder / 1000);
             newItem.innerHTML = `<div>${site}</div><div>${minutes} minutes ${seconds} seconds</div>`;
             parent.appendChild(newItem);
         }
