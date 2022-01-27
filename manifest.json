@@ -6,7 +6,7 @@
     "background" : {
         "service_worker": "main.js"
     },
-    "permissions": ["storage"],
+    "permissions": ["storage", "tabs"],
     "action": {
         "default_popup": "index.html"
       }
