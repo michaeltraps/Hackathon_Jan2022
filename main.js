@@ -6,7 +6,10 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 
 chrome.tabs.onActivated.addListener(function(activeInfo) {
-    console.log(activeInfo.tabId);
-    console.log(activeInfo.url);
-    console.log(activeInfo);
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    var activeTab = tabs[0];
+    var activeURL = activeTab.url; // or do whatever you need
+    console.log(activeURL);
+  });
 });
+
