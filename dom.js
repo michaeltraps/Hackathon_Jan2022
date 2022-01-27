@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let minutes = currentData[site] / 60000;
             let remainder = currentData[site] % 60000;
             let seconds = remainder / 1000;
-            newItem.innerHTML = `<div>${site}</div><div>${minutes}:${seconds}</div>`;
+            newItem.innerHTML = `<div>${site}</div><div>${minutes} minutes ${seconds} seconds</div>`;
             parent.appendChild(newItem);
         }
     });
