@@ -5,6 +5,9 @@ chrome.runtime.onInstalled.addListener(() => {
     console.log(`Site log created: ${siteLog}`);
 });
 
+let prevURL;
+let timer = 0;
+
 chrome.tabs.onActivated.addListener(function (activeInfo) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         var activeTab = tabs[0];
@@ -16,13 +19,17 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
             console.log(data);
             console.log('data[siteLog]');
             console.log(data['siteLog']);
-            if (data['siteLog'][activeURL]) {
-                data['siteLog'][activeURL]++;
-            } else {
-                data['siteLog'][activeURL] = 1;
+            if (prevURL != undefined) {
+              if (data['siteLog'][prevURL]) {
+                  data['siteLog'][prevURL]++;
+              } else {
+                  data['siteLog'][prevURL] = 1;
+              }
             }
+            
             chrome.storage.sync.set({ 'siteLog': data['siteLog'] });
             console.log(data);
+            prevURL = activeURL;
         });
         
     });
