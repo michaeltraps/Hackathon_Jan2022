@@ -13,10 +13,14 @@ document.addEventListener('DOMContentLoaded', function() {
             let remainder = currentData[site] % 60000;
             let minutes = (currentData[site] - remainder) / 60000;
             let seconds = Math.ceil(remainder / 1000);
-            newItem.innerHTML = `<div>${site}</div><div>${minutes} minutes ${seconds} seconds</div>`;
+
+            minutes = minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+            seconds = seconds.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+            newItem.innerHTML = `<div>${site}</div><div>${minutes}:${seconds}</div>`;
             parent.appendChild(newItem);
         }
     });
+    (6)
 
 
   });
