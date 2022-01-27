@@ -8,7 +8,7 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.tabs.onActivated.addListener(function(activeInfo) {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     var activeTab = tabs[0];
-    var activeURL = activeTab.url; // or do whatever you need
+    var activeURL = activeTab.url.match("\/\/(.*)\/");
     console.log(activeURL);
   });
 });
