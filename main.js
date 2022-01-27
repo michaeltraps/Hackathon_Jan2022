@@ -25,17 +25,9 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
                   //currentRow.innerHTML = `<div>${prevURL}</div><div>${data['siteLog'][prevURL]}</div>`
               } else {
                   data['siteLog'][prevURL] = visitLength;
-                  //let currentRow = document.createElement('div');
-                  //currentRow.setAttribute('class', 'site-row');
-                  //currentRow.setAttribute('id', prevURL);
-                  //currentRow.innerHTML = `<div>${prevURL}</div><div>${data['siteLog'][prevURL]}</div>`
-                  //parent.appendChild(currentRow);
-                 
               }
             }
 
-            console.log('Current data...');
-            console.log(data['siteLog']);
             chrome.storage.sync.set({ 'siteLog': data['siteLog'] });
             prevURL = activeURL;
             startTime = Date.now();

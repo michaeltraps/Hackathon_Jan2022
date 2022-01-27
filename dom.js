@@ -20,7 +20,4 @@ document.addEventListener('DOMContentLoaded', function() {
             parent.appendChild(newItem);
         }
     });
-    (6)
-
-
   });
