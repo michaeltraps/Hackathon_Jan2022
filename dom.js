@@ -1,7 +1,7 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    let parent = document.getElementByID('main-table');
+    let parent = document.getElementsByClassName('main-table')[0];
     parent.innerHTML = "";
     // Loop through each element in our object, and insert a row/value
     chrome.storage.sync.get('siteLog', function (data) {
