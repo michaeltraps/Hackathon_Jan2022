@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert(Array.from(Object.keys(currentData)).toString());
             let newItem = document.createElement('div');
             newItem.setAttribute('class', 'site-row');
-            newItem.innerHTML(`<div>${site}</div><div>${currentData[site]}</div>`);
+            newItem.innerHTML = `<div>${site}</div><div>${currentData[site]}</div>`;
             parent.appendChild(newItem);
         }
 
