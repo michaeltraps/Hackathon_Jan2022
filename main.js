@@ -16,6 +16,7 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
 
         chrome.storage.sync.get('siteLog', function (data) {
             let parent = document.getElementById('main-table');
+            console.log()
             if (prevURL != undefined) {
               let visitLength = Date.now() - startTime;
               if (data['siteLog'][prevURL]) {
