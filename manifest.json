@@ -2,5 +2,10 @@
     "name": "SiteTime",
     "description": "Keep track of how you spend your time online.",
     "version": "1.0",
-    "manifest_version": 3
+    "manifest_version": 3,
+    "background" : {
+        "service_worker": "main.js"
+    },
+    "permissions": ["storage"]
+
   }
