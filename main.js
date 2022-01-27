@@ -13,13 +13,15 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
         var activeTab = tabs[0];
         var activeURL = activeTab.url.match("\/\/(.*?)\/")[1];
         console.log(activeURL);
-
+        
         chrome.storage.sync.get('siteLog', function (data) {
             if (prevURL != undefined) {
               if (data['siteLog'][prevURL]) {
                   data['siteLog'][prevURL] += (Date.now() - startTime);
+                  // Add a new div for this item
               } else {
                   data['siteLog'][prevURL] = (Date.now() - startTime);
+                  // Update exisiting div for this item
               }
             }
 
